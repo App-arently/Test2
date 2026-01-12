@@ -1,0 +1,23 @@
+PWA Icons Needed
+================
+
+Please add the following icon files to this directory:
+
+1. icon-192.png (192x192 pixels)
+2. icon-512.png (512x512 pixels)
+
+These icons will be used for:
+- PWA home screen installation
+- App icon on mobile devices
+- Favicon
+
+You can generate these using:
+- Figma/Photoshop
+- Online tools like https://realfavicongenerator.net/
+- AI image generators
+
+Recommended design:
+- FanMerch AI logo
+- Football/soccer theme
+- Bold, simple design
+- Works well at small sizes

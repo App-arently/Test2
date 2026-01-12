@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Order {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  // Product Details
+  productType String // 'tshirt' | 'hoodie' | 'cap' | 'poster'
+  designType  String // 'player' | 'team' | 'text'
+  subject     String // "Messi", "Barcelona", etc.
+  userPrompt  String // User's creative input
+  generatedImageUrl String
+
+  // Variants
+  size  String
+  color String
+
+  // Pricing (in cents)
+  retailPrice   Int
+  printfulCost  Int
+
+  // Customer
+  customerEmail   String
+  shippingAddress Json
+
+  // External IDs
+  stripeSessionId  String  @unique
+  printfulOrderId  String?
+
+  // Status
+  status String // 'pending' | 'paid' | 'fulfillment' | 'shipped' | 'cancelled'
+
+  @@index([stripeSessionId])
+  @@index([status])
+}
