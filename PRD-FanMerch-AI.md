@@ -14,19 +14,25 @@
 **Category:** Mobile Commerce (PWA) + Generative AI
 **Core Value Prop:** Generate custom football merchandise in 60 seconds using AI, no design skills required.
 
-**Target Customer:** Football fans (18-45) in EU/UK who want unique, personalized merch but hate generic designs.
+**Target Customer:** Employed football fans (25-35) in EU/UK/Dubai with disposable income who want unique, personalized merch but hate generic designs.
 
-**Revenue Model:** Dropshipping with 2.2× markup on Printful base costs.
-**Target Margin:** 50-55% after AI/fulfillment costs.
+**Revenue Model:** Dropshipping with 2.8× average markup on Printful base costs. Bundle discounts to increase AOV.
+**Target Margin:** 64-70% before AI/fulfillment costs (~60% net margin).
 
 ---
 
 ## 1. Business Model Canvas
 
 ### Customer Segments
-- **Primary:** Football fans who engage with meme culture/social media
-- **Secondary:** Gift buyers (birthdays, holidays)
+- **Primary:** Employed football fans (25-35) with disposable income who engage with meme culture/social media
+- **Secondary:** Gift buyers (birthdays, holidays) looking for unique presents
 - **Tertiary:** Supporters groups (bulk custom orders - Phase 2)
+
+**Target Demographics:**
+- Age: 25-35 (peak earning years, still engaged with digital culture)
+- Income: €35k-75k+ annual (can afford $69 impulse purchase)
+- Behavior: Active on Instagram/TikTok, follows football meme accounts
+- Psychographics: Values uniqueness, self-expression, humor
 
 ### Problem Statement
 1. Official merch is expensive and generic ($80 for a basic jersey)
@@ -46,17 +52,22 @@ AI-powered merch generator with guided prompts → instant mockups → 1-click c
 ### Revenue Streams
 | Product | Printful Cost | Retail Price | Margin |
 |---------|---------------|--------------|--------|
-| T-Shirt | $12 | $26 | $14 (54%) |
-| Hoodie | $25 | $55 | $30 (55%) |
-| Cap | $15 | $33 | $18 (55%) |
-| Poster | $8 | $18 | $10 (56%) |
+| T-Shirt | $12 | $37 | $25 (68%) |
+| Hoodie | $25 | $69 | $44 (64%) |
+| Cap | $15 | $45 | $30 (67%) |
+| Poster | $8 | $27 | $19 (70%) |
 
-**Target:** 100 orders/month = $3,000 gross profit at 50% conversion from generation to purchase.
+**Bundle Pricing:**
+- Buy 2 items: Save $15 (automatic discount at checkout)
+- Buy 3+ items: Save $30
+
+**Target:** 100 orders/month = $3,800 gross profit at 15% conversion from generation to purchase.
+**Stretch Goal:** 20% bundle rate → AOV increases to $65 → $4,400/month profit.
 
 ### Key Metrics (Success Criteria)
 - **Generation → Purchase conversion:** >15% (industry standard: 2-5%)
-- **Average Order Value (AOV):** $45
-- **Customer Acquisition Cost (CAC):** <$15 (via Meta ads)
+- **Average Order Value (AOV):** $54 (single item), $65+ (with bundles)
+- **Customer Acquisition Cost (CAC):** <$20 (via Meta ads)
 - **Time to first order:** <3 weeks from launch
 
 ---
@@ -87,6 +98,7 @@ AI-powered merch generator with guided prompts → instant mockups → 1-click c
 | Basic analytics (Plausible) | Track conversion funnel | Day 7 |
 | Terms of Service + Privacy | Legal compliance | Day 6 |
 | Size/color selection | Printful supports this easily | Day 4 |
+| Bundle pricing (Buy 2/3+) | Increases AOV by 20% | Day 5 |
 
 ---
 
@@ -589,38 +601,51 @@ function buildPrompt(input: UserInput): string {
 
 ### 6.3 Pricing Strategy
 
-**Initial Pricing (Test):**
-- T-Shirt: $26
-- Hoodie: $55
-- Cap: $33
-- Poster: $18
+**Initial Pricing:**
+- T-Shirt: $37
+- Hoodie: $69 (hero product)
+- Cap: $45
+- Poster: $27
+
+**Bundle Incentives:**
+- Buy 2 items: Save $15 (shown at cart)
+- Buy 3+ items: Save $30
+- Target: 20% of customers bundle → higher AOV
 
 **Discount Experiments:**
 - "FIRST10" → 10% off first order (test conversion impact)
-- "FREESHIP" → Free shipping over $50 (test AOV)
+- "FREESHIP69" → Free shipping on orders $69+ (incentivize hoodie purchase)
 
 **Dynamic Pricing (Phase 2):**
-- A/B test $49 vs $55 for hoodies
-- Premium designs (+$10) for limited-edition prompts
+- A/B test $69 vs $79 for hoodies (test price ceiling)
+- Premium designs (+$15) for limited-edition prompts
 
 ---
 
 ### 6.4 Customer Acquisition Cost (CAC) Target
 
-**Calculation:**
+**Calculation (Single Item):**
 ```
-AOV: $45
-Margin: 50% = $22.50 gross profit
-Target CAC: $15 (67% of profit)
-Allowable CPC: $0.50 (at 3% CTR)
+AOV: $54 (avg of hoodie/tshirt mix)
+Margin: 65% = $35 gross profit
+Target CAC: $20 (57% of profit)
+Allowable CPC: $0.60 (at 3% CTR)
+```
+
+**Calculation (With Bundles):**
+```
+AOV: $65 (20% bundle rate)
+Margin: 66% = $43 gross profit
+Target CAC: $23 (53% of profit)
+Allowable CPC: $0.70 (at 3% CTR)
 ```
 
 **Scenario Analysis:**
-| Orders/Month | Revenue | Profit | Ad Spend | ROI |
-|--------------|---------|--------|----------|-----|
-| 50 | $2,250 | $1,125 | $750 | 1.5× |
-| 100 | $4,500 | $2,250 | $1,500 | 1.5× |
-| 200 | $9,000 | $4,500 | $3,000 | 1.5× |
+| Orders/Month | Revenue | Profit | Ad Spend | Net Profit | ROI |
+|--------------|---------|--------|----------|------------|-----|
+| 50 | $3,250 | $2,113 | $1,000 | $1,113 | 2.1× |
+| 100 | $6,500 | $4,225 | $2,000 | $2,225 | 2.1× |
+| 200 | $13,000 | $8,450 | $4,000 | $4,450 | 2.1× |
 
 ---
 
