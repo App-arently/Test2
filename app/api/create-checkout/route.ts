@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
       })
     } catch (dbError) {
       console.error("Database error:", dbError)
-      // Continue anyway - webhook will handle order creation if DB fails
+      // Continue anyway - webhook uses upsert to create order if it doesn't exist
     }
 
     return NextResponse.json({
