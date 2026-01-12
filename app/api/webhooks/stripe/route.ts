@@ -56,22 +56,47 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
     const sessionId = session.id
     const customerEmail = session.customer_details?.email || ""
     const shippingAddress = session.shipping_details?.address || {}
+    const metadata = session.metadata || {}
 
-    // Update order in database
-    const order = await prisma.order.update({
+    // Use upsert to handle case where order creation failed during checkout
+    const order = await prisma.order.upsert({
       where: { stripeSessionId: sessionId },
-      data: {
+      update: {
         customerEmail,
         shippingAddress,
         status: "paid",
       },
+      create: {
+        stripeSessionId: sessionId,
+        customerEmail,
+        shippingAddress,
+        status: "paid",
+        productType: metadata.productType || "unknown",
+        designType: metadata.designType || "unknown",
+        subject: metadata.subject || "",
+        userPrompt: metadata.userPrompt || "",
+        generatedImageUrl: metadata.imageUrl || "",
+        size: metadata.size || "M",
+        color: metadata.color || "Black",
+        retailPrice: session.amount_total || 0,
+        printfulCost: 0, // Will be calculated by Printful
+      },
     })
 
-    // Create Printful order
+    // Create Printful order (only if shipping details are available)
+    if (!session.shipping_details) {
+      console.error("No shipping details in session:", sessionId)
+      await prisma.order.update({
+        where: { id: order.id },
+        data: { status: "cancelled" },
+      })
+      return
+    }
+
     try {
       const printfulOrderId = await createPrintfulOrder({
         order,
-        shippingAddress: session.shipping_details!,
+        shippingAddress: session.shipping_details,
       })
 
       // Update order with Printful ID
